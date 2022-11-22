@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PasswordChecking</title>
+</head>
+<body>
+    <div class="heading">Enter minimum 10 Character</div>
+    <div class="inputContainer">
+        <input type="text" id="inputMsg" placeholder="Enter Password here"/>
+        <button class="btn" onclick="add()">Add</button>
+    </div>
+    <div class="alertmsgContainer">
+        <div class="alterMsg1" id="alterMsg1">Error</div>
+        <div class="alterMsg2" id="alterMsg2">Success</div>
+    </div>
+    <script>
+        'use strict';
+
+        let inputMsgEl = document.getElementById('inputMsg');
+        let alterMsg1El = document.getElementById('alterMsg1');
+        let alterMsg2El = document.getElementById('alterMsg2');
+
+        function add(){
+            let inputMsgVal = inputMsgEl.value;
+            if(!inputMsgVal){
+                error()
+            }else{
+                inputMsgVal.length >=10 ? success() : error ();
+            }
+        }
+
+        function success(){
+            alterMsg1El.style.visibility = 'hidden';
+            alterMsg2El.style.visibility = 'visible';
+        }
+
+        function error(){
+            alterMsg1El.style.visibility = 'visible';
+            alterMsg2El.style.visibility = 'hidden';
+        }
+
+    </script>
+    <style>
+        *,*::after,*::before{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .heading{
+            margin-bottom: 1rem;
+            color: white;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: rgb(49, 49, 59);
+        }
+        input{
+            outline: none;
+            font-size: 1rem;
+            height: 2rem;
+        }
+
+        .btn{
+            height: 31px;
+            width: 3rem;
+            border: 1px solid white;
+            background-color: rgb(42, 41, 41);
+            color: white;
+            border-radius: 5px;
+        }
+
+        .btn:hover{
+            position: relative;
+            bottom: 1px;
+            box-shadow: 5px 5px 10px black;
+        }
+
+        .alterMsg1,.alterMsg2{
+            visibility: hidden;
+            color: red;
+            position: absolute;
+            left: -125px;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .alertmsgContainer{
+            position: relative;
+        }
+    </style>
+</body>
+</html>
